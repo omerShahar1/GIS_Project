@@ -1,5 +1,5 @@
 ## How to run
-before starting, make sure to dawnload the sdk:
+before starting, pleas dawnload the following sdk:
 ```
 npm install @arcgis/core
 ```
