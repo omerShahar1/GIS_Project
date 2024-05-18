@@ -17,9 +17,9 @@ We added to the map ‘view’ constant another layer to show geographic locatio
 Each city is represented on the map with a red bubble. You can press the bubble and receive the specific information regarding that city (currently name and population).
 
 ## possible future improvments:
-### Move the cities data into a data base. This will allow us to change the data without the need to redeploy the application.
-### We need to test the system in different resolutions (phones, iPads, etc.)
-### We should prepare for what happens if there are network problems? (slow network or disconnections). 
+# Move the cities data into a data base. This will allow us to change the data without the need to redeploy the application.
+# We need to test the system in different resolutions (phones, iPads, etc.)
+# We should prepare for what happens if there are network problems? (slow network or disconnections). 
 
 דs
 'י
