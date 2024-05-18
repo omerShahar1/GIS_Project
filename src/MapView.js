@@ -1,4 +1,3 @@
-// src/MapView.js
 import React, { useEffect, useRef } from 'react';
 import MapView from '@arcgis/core/views/MapView';
 import WebMap from '@arcgis/core/WebMap';
@@ -7,7 +6,8 @@ import Point from '@arcgis/core/geometry/Point';
 import PopupTemplate from '@arcgis/core/PopupTemplate';
 
 
-// data of capitl cities and pops 
+// data of capitl cities and pops
+// the data is currently saved in a list of 'capitalCities' objects.
 const capitalCities = [
     { name: 'Kabul', population: 4136000, coordinates: [69.13675829, 34.53091193] },
     { name: 'Tirana', population: 418495, coordinates: [19.83200436, 41.33199592] },
@@ -219,21 +219,23 @@ const capitalCities = [
     { name: 'Harare', population: 1890000, coordinates: [31.04568615, -17.81778978] },
 ];
 
+// the popupTemplate is pre design template from "https://developers.arcgis.com/javascript/latest/api-reference/esri-PopupTemplate.html".
+// currently we only used it for the population number.
 const popupTemplate = new PopupTemplate({
     title: "{Name}",
     content: [{
-      type: "text",
-      text: "<b>Population:</b> {Population}"
+        type: "text",
+        text: "<b>Population:</b> {Population}"
     }],
     className: "custom-popup-template"
   });
 
 const MapComponent = () => {
-    const mapRef = useRef(null);
+    const mapRef = useRef(null); // reference to the map component
 
     useEffect(() => {
         const webMap = new WebMap({
-            basemap: 'streets-navigation-vector'
+            basemap: 'streets-navigation-vector' // There have more maps designs in "https://developers.arcgis.com/javascript/latest/api-reference/esri-WebMap.html" 
         });
 
         const view = new MapView({
@@ -243,13 +245,13 @@ const MapComponent = () => {
             zoom: 7
         });
 
-        capitalCities.forEach(city => {
+        capitalCities.forEach(city => { // Iterator for all the 'capitalCities' objects from the list above
             const point = new Point({
                 longitude: city.coordinates[0],
                 latitude: city.coordinates[1]
             });
 
-            const symbol = {
+            const symbol = { // design of the red circle for capital cities.
                 type: 'simple-marker',
                 color: 'red',
                 outline: 
@@ -274,7 +276,7 @@ const MapComponent = () => {
             view.graphics.add(graphic);
         });
 
-        return () => {
+        return () => { // Im using singleton design pattern here. 
             if (view) {
                 view.destroy();
             }
