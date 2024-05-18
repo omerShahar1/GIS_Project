@@ -276,7 +276,7 @@ const MapComponent = () => {
             view.graphics.add(graphic);
         });
 
-        return () => { // Im using singleton design pattern here. 
+        return () => {
             if (view) {
                 view.destroy();
             }
